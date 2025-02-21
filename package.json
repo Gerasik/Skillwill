@@ -1,5 +1,6 @@
 {
   "name": "skillwill",
+  "homepage": "https://gerasik.github.io/Skillwill",
   "version": "1.0.0",
   "private": true,
   "description": "skillwill",
@@ -13,9 +14,11 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "deploy": "gatsby build && gh-pages -d public"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.0.7",
     "autoprefixer": "^10.4.20",
     "gatsby": "^5.14.1",
     "gatsby-plugin-image": "^3.14.0",
@@ -25,6 +28,8 @@
     "gatsby-plugin-sitemap": "^6.14.0",
     "gatsby-source-filesystem": "^5.14.0",
     "gatsby-transformer-sharp": "^5.14.0",
+    "gh-pages": "^6.3.0",
+    "lucide-react": "^0.475.0",
     "postcss": "^8.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
