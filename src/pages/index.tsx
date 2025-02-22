@@ -1,6 +1,7 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import { Mail, Phone } from "lucide-react"
+import { StaticImage } from "gatsby-plugin-image"
 
 const Button = ({
   className,
@@ -36,7 +37,19 @@ const Card = ({
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-900">
+    <div className="min-h-screen bg-grey-500 text-gray-900">
+      <header className="px-20 py-2 flex justify-between flex-row items-center">
+        <div>
+          <StaticImage src="../images/logo.png" alt="logo" />
+        </div>
+        <nav>
+          <ul className="flex flex-row gap-4">
+            <li>About</li>
+            <li>Our Services</li>
+            <li>Contacts</li>
+          </ul>
+        </nav>
+      </header>
       {/* Hero Section */}
       <section className="text-center py-20 bg-blue-600 text-white">
         <h1 className="text-4xl font-bold">
