@@ -13,7 +13,7 @@ collections:
     label: "Pages"
     folder: "content/pages"
     create: true
-    slug: "{{slug}}"
+    slug: "index"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
