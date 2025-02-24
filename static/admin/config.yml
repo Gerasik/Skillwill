@@ -1,0 +1,19 @@
+backend:
+  name: github
+  repo: gerasik/Skillwill
+  branch: main
+  base_url: https://api.github.com
+  auth_endpoint: auth
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
