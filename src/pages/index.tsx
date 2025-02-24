@@ -44,7 +44,7 @@ const IndexPage: React.FC<PageProps> = () => {
         </div>
         <nav>
           <ul className="flex flex-row gap-4">
-            <li>About</li>
+            <li>About Us</li>
             <li>Our Services</li>
             <li>Contacts</li>
           </ul>

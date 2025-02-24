@@ -2,8 +2,7 @@ backend:
   name: github
   repo: gerasik/Skillwill
   branch: main
-  base_url: https://api.github.com
-  auth_endpoint: auth
+  auth_endpoint: https://gerasik.github.io/Skillwill/admin/oauth/authorize
 
 media_folder: static/img
 public_folder: /img
