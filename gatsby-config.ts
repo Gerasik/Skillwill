@@ -31,6 +31,22 @@ const config: GatsbyConfig = {
       },
       __key: "images",
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/content/pages/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `settings`,
+        path: `${__dirname}/content/settings/`,
+      },
+    },
+    "gatsby-transformer-remark",
+    "gatsby-transformer-json",
   ],
 }
 

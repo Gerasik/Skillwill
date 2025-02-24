@@ -1,7 +1,21 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import { Mail, Phone } from "lucide-react"
-import { StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image"
+import { graphql } from "gatsby"
+
+interface SettingsJson {
+  phone: string
+  email: string
+  logo: any
+  site_name: string
+}
+
+interface IndexPageProps extends PageProps {
+  data: {
+    settingsJson: SettingsJson
+  }
+}
 
 const Button = ({
   className,
@@ -35,12 +49,24 @@ const Card = ({
   return <div className={className}>{children}</div>
 }
 
-const IndexPage: React.FC<PageProps> = () => {
+const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
+  console.log("🚀 ~ data:", data)
+  const { site_name, phone, email, logo } = data.settingsJson
+  const logoImage = getImage(logo)
+
+  if (!logoImage) {
+    console.warn("Logo image not found, using default logo.")
+  }
+
   return (
     <div className="min-h-screen bg-grey-500 text-gray-900">
       <header className="px-20 py-2 flex justify-between flex-row items-center">
         <div>
-          <StaticImage src="../images/logo.png" alt="logo" />
+          {logoImage ? (
+            <GatsbyImage image={logoImage} alt={site_name} />
+          ) : (
+            <StaticImage src="../images/logo.png" alt="logo" />
+          )}
         </div>
         <nav>
           <ul className="flex flex-row gap-4">
@@ -107,16 +133,27 @@ const IndexPage: React.FC<PageProps> = () => {
         </p>
         <div className="flex justify-center gap-6 mt-6">
           <Button variant="outline" className="flex items-center gap-2">
-            <Mail /> info@skillwill.com
+            <Mail /> {email}
           </Button>
           <Button variant="outline" className="flex items-center gap-2">
-            <Phone /> +1 (123) 456-7890
+            <Phone /> {phone}
           </Button>
         </div>
       </section>
     </div>
   )
 }
+
+export const query = graphql`
+  query {
+    settingsJson {
+      phone
+      email
+      logo
+      site_name
+    }
+  }
+`
 
 export default IndexPage
 
