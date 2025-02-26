@@ -52,19 +52,24 @@ const Card = ({
 const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
   console.log("🚀 ~ data:", data)
   const { site_name, phone, email, logo } = data.settingsJson
-  const logoImage = getImage(logo)
+  console.log("🚀 ~ logo:", logo)
+  const logoImage = getImage("static/img/logo.png" as any)
+  console.log("🚀 ~ logoImage:", logoImage)
 
   if (!logoImage) {
     console.warn("Logo image not found, using default logo.")
   }
+  const newLogo = `..${logo}`
 
+  console.log("🚀 ~ newLogo:", newLogo, "/img/logo.png")
   return (
     <div className="min-h-screen bg-grey-500 text-gray-900">
       <header className="px-20 py-2 flex justify-between flex-row items-center">
         <div>
-          {logoImage ? (
-            <GatsbyImage image={logoImage} alt={site_name} />
+          {logo ? (
+            <img src={newLogo} alt={site_name} />
           ) : (
+            // <StaticImage src={newLogo} alt={site_name} />
             <StaticImage src="../images/logo.png" alt="logo" />
           )}
         </div>
